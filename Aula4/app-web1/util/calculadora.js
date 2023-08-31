@@ -7,11 +7,11 @@ function subtrair(a, b) {
 }
 
 function multiplicar(a, b){
-    return a * b;
+    return Number.parseInt(a) * Number.parseInt(b);
 }
 
 function dividir(a, b){
-    return a/b;
+    return Number.parseFloat(a) / Number.parseFloat(b);
 }
 
 const PI = 3.14;

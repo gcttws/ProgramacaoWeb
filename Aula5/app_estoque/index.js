@@ -20,6 +20,12 @@ app.get("/api/estoque/listar", function(req, res) {
     res.json(estoque.listar_produtos());
 });
 
+app.get("/api/estoque/editar/:id/:qtdAtual", function(req, res){
+    let id = req.params.id;
+    let qtdAtual = req.params.qtdAtual;
+    estoque.editar_produto(id, qtdAtual);
+});
+
 const PORT = 8080;
 app.listen(PORT, function(){
     console.log("App rodando na porta " + PORT);

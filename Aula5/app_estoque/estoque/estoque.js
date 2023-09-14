@@ -18,8 +18,21 @@ function listar_produtos(){
     return produtos;
 }
 
+function editar_produto(id, qtdAtual){
+    let pRetorno = {};
+
+    produtos.forEach(p => {
+        if(p.id == id){
+            p.quantidade = qtdAtual;
+            pRetorno = p;
+        }
+    });
+    return pRetorno;
+}
+
 module.exports ={
     criar_produto,
     adicionar_produto,
-    listar_produtos
+    listar_produtos,
+    editar_produto
 }

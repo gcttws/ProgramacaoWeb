@@ -26,6 +26,16 @@ app.get("/api/estoque/editar/:id/:qtdAtual", function(req, res){
     estoque.editar_produto(id, qtdAtual);
 });
 
+app.get("/api/estoque/remover/:id", function(req, res){
+    let id = req.params.id;
+    let remover = estoque.remover_produto(id);
+    if(remover == true){
+        res.send("Produto removido com sucesso");
+    }else{
+        res.send("Produto com o ID fornecido não encontrado");
+    }
+});
+
 const PORT = 8080;
 app.listen(PORT, function(){
     console.log("App rodando na porta " + PORT);

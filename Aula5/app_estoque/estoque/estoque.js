@@ -29,10 +29,19 @@ function editar_produto(id, qtdAtual){
     });
     return pRetorno;
 }
+function remover_produto(id) {
+    const indice = produtos.findIndex(p => p.id === id);
+    if (indice !== -1) {
+        produtos.splice(indice, 1);
+        return true; // Produto removido com sucesso
+    }
+    return false; // Produto com o ID fornecido não encontrado
+}
 
 module.exports ={
     criar_produto,
     adicionar_produto,
     listar_produtos,
-    editar_produto
+    editar_produto,
+    remover_produto
 }

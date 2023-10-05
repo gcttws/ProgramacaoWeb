@@ -20,10 +20,27 @@ app.get('/', function(req, res){
 });
 
 app.post('/dados', function(req, res){
-    const {nome, endereco, telefone, data} = req.body;
-    const usuario = {nome, endereco, telefone, data}
-    
-    res.render('dados.html', {usuario});
+    const usuario = {
+        nome: req.body.nome,
+        endereco: req.body.endereco, 
+        telefone: req.body.telefone, 
+        data_agendamento: req.body.data_agendamento
+    };
+
+    let erro_form = false;
+    if(usuario.nome == ""){
+        erro_form = true;
+    }
+    if(usuario.endereco == ""){
+        erro_form = true;
+    }
+    if(usuario.telefone == ""){
+        erro_form = true;
+    }
+    if(usuario.data_agendamento == ""){
+        erro_form = true;
+    }
+    res.render('dados.html', {usuario, erro_form});
 });
 
 

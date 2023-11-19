@@ -2,16 +2,28 @@ const Usuario = require('../model/usuario');
 
 function cadastrarUsuario(req, res) {
     let usuario = {
-        email: req.body.email,
-        senha: req.body.senha,
-        nome: req.body.nome,
-        data_nascimento: req.body.data_nascimento
+        email: typeof req.body.email === 'string' ? req.body.email.trim(): '',
+        senha: typeof req.body.senha === 'string' ? req.body.senha.trim(): '',
+        nome: typeof req.body.nome === 'string' ? req.body.nome.trim(): '',
+        data_nascimento: typeof req.body.data_nascimento === 'string' ? req.body.data_nascimento.trim() : ''
     }
     
-    if(!validarUsuario(usuario)){
+    if(!validaCamposInput(usuario)){
         let erro = true;
         res.render("index.html", {erro, mensagem: "Todos os campos são obrigatórios."})
-        return -1;
+        return;
+    }
+
+    if(!validaEmail(usuario.email)){
+        let erro = true;
+        res.render("index.html", {erro, mensagem: "E-mail inválido."});
+        return;
+    }
+
+    if(!validaDataNascimento(usuario.data_nascimento)){
+        let erro = true;
+        res.render("index.html", {erro, mensagem: "Usuário deve ser maior de 18 anos."})
+        return;
     }
 
     Usuario.create(usuario).then(()=>{
@@ -33,7 +45,7 @@ function listarUsuarios(req, res) {
     });
 }
 
-function validarUsuario(usuario){
+function validaCamposInput(usuario){
     const camposRequeridos = ['email', 'senha', 'nome', 'data_nascimento'];
     for(let campo of camposRequeridos){
         if(!usuario[campo] || usuario[campo].trim() == ''){
@@ -41,6 +53,19 @@ function validarUsuario(usuario){
         }
     }
     return true;
+}
+
+function validaDataNascimento(dataNascimento){
+    const dataAtual = new Date();
+    const dataLimiteParaMaiorIdade = new Date(dataAtual.getFullYear() - 18, dataAtual.getMonth(), dataAtual.getDate());
+
+    return new Date(dataNascimento) <= dataLimiteParaMaiorIdade;
+}
+
+function validaEmail(email){
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return regexEmail.test(email);
 }
 
 module.exports = {

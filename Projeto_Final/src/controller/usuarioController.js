@@ -8,6 +8,12 @@ function cadastrarUsuario(req, res) {
         data_nascimento: req.body.data_nascimento
     }
     
+    if(!validarUsuario(usuario)){
+        let erro = true;
+        res.render("index.html", {erro, mensagem: "Todos os campos são obrigatórios."})
+        return -1;
+    }
+
     Usuario.create(usuario).then(()=>{
         let sucesso = true;
         res.render("index.html", {sucesso});
@@ -25,6 +31,16 @@ function listarUsuarios(req, res) {
     }).catch((err)=>{
         res.json(err);
     });
+}
+
+function validarUsuario(usuario){
+    const camposRequeridos = ['email', 'senha', 'nome', 'data_nascimento'];
+    for(let campo of camposRequeridos){
+        if(!usuario[campo] || usuario[campo].trim() == ''){
+            return false;
+        }
+    }
+    return true;
 }
 
 module.exports = {

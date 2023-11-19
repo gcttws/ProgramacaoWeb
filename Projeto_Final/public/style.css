@@ -1,0 +1,5 @@
+.bg-image{
+    height: 100%;
+    background-image: url('img/img_login_page.jpg');
+    background-size: cover;
+}

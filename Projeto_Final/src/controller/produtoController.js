@@ -1,3 +1,4 @@
+const Sequelize = require('sequelize')
 const Produto = require('../model/produto');
 
 function indexView(req, res) {

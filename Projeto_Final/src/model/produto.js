@@ -35,6 +35,10 @@ const Produto = database.define('produto', {
         values: (['eletrônico', 'eletrodoméstico','vestuário', 'alimento']),
         allowNull: false
     },
+    estado: {
+        type: Sequelize.ENUM,
+        values: (['avariado', 'funcional', 'manutenção'])
+    },
     usuario_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

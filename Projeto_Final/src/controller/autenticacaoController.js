@@ -1,5 +1,4 @@
 const Usuario = require('../model/usuario');
-
 async function autenticar(req, res){
     const usuario = await Usuario.findOne({
         where: {
@@ -21,8 +20,10 @@ async function autenticar(req, res){
 function verificarAutenticacao(req, res, next){
     if(req.session.autorizado){
         console.log('usuário autorizado');
+        next();
     }else{
         console.log('usuário NÃO autorizado');
+        res.redirect('/')
     }
 }
 

@@ -1,1 +1,12 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "functions";
+@import "variables";
+
+$primary: $orange;
+
+$theme-colors: map-merge($theme-colors, (
+    "primary": $primary,
+    "text-primary": $primary
+));
+
+// set changes
+@import "bootstrap";

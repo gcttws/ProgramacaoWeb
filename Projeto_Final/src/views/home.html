@@ -1,15 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> 
-</head>
-<body>
-    <div class="container">
-        <h1 class="cadastro-usuario"></h1>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+        rel="stylesheet"
+        href="css/index.css"
+    />
+    <script>
+      import logo from '../../public/img/logo.svg'
+    </script>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark border border-2 border-secundary"
+      style="background-color: #9aa4b7"
+    >
+      <div class="container">
+        <div class="collapse navbar-collapse">
+          <a class="navbar-brand" href="#">
+            <img
+              src="https://i.imgur.com/uVzujQa.png"
+              alt=""
+              width="80"
+              height="80"
+            />
+          </a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center col-md-6">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" style="
+              color: #041c4c;
+              ">
+                <i class="fa-solid fa-users"></i>
+                Usuários</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="
+              color: #041c4c;
+              ">
+                <i class="fa-solid fa-box"></i>
+                Produtos</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNavDarkDropdown"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle" style="
+                color: #041c4c;
+                "
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Configurações</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fa-solid fa-right-from-bracket"></i>
+                    Sair</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Search bar-->
+    <div class="row justify-content-center border-bottom border-2" style="background-color: #d9d9d9">
+      <div class="col-6">
+        <input
+          class="form-control form-control-dark border border-2 rounded border-secundary"
+          type="text"
+          name="buscar"
+          placeholder="Buscar"
+          aria-label="Buscar"
+        />
+      </div>
     </div>
-</body>
+    <!--Search bar-->
+    <main class="vh-100" style="background-color: #FFFF;">
+      <div class="container">
+        <div class="row justify-content-center gap-5 mt-5">
+          <div class="col card col-lg-2 border border-5 rounded" style="width: 18rem">
+            <a class="ancora-icons" href="/cadastroProduto" style="text-decoration: none;">
+              <div class="card-body main-page-card">
+                <h5 class="card-title" style="
+                 color: #041c4c;
+                 ">
+                  <i class="fa-solid fa-box"></i>
+                  Cadastrar um produto
+                </h5>
+                <p class="card-text" style="
+                color: #041c4c;
+                ">
+                  Use este módulo para adicionar novos produtos ao seu
+                  inventário
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col card col-lg-2 border border-5 rounded" style="width: 18rem">
+            <a class="ancora-icons" href="#listagem_produtos" style="text-decoration: none;">
+              <div class="card-body">
+                <h5 class="card-title" style="
+                color: #041c4c;
+                ">
+                  <i class="fa-solid fa-table"></i>
+                  Listagem de produtos
+                </h5>
+                <p class="card-text" style="
+                color: #041c4c;
+                ">
+                  Use este módulo para listar todos os produtos disponíveis
+                  cadastrados
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col card col-lg-2 border border-5 rounded" style="width: 18rem">
+            <a href="#edicao_produto" class="ancora-icons" style="text-decoration: none;">
+              <div class="card-body">
+                <h5 class="card-title" style="
+                color: #041c4c;
+                ">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  Edição de produtos
+                </h5>
+                <p class="card-text" style="
+                color: #041c4c;
+                ">
+                  Use este módulo para editar produtos já existentes
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="row justify-content-center gap-5 mt-5">
+          <div class="col card col-lg-2 border border-5 rounded" style="width: 18rem">
+            <a href="#exclusao_produto" class="ancora-icons" style="text-decoration: none;">
+              <div class="card-body">
+                <h5 class="card-title" style="
+                color: #041c4c;
+                ">
+                  <i class="fa-solid fa-user-minus"></i>
+                  Excluir um usuário
+                </h5>
+                <pclass="card-text" style="
+                color: #041c4c;
+                ">Use este módulo para excluir um usuário</p>
+              </div>
+            </a>
+          </div>
+          <div class="col card col-lg-2 border border-5 rounded" style="width: 18rem">
+            <a href="#listar_usuarios" class="ancora-icons" style="text-decoration: none;">
+              <div class="card-body">
+                <h5 class="card-title" style="
+                color: #041c4c;
+                ">
+                  <i class="fa-solid fa-users-line"></i>
+                  Listagem de Usuários
+                </h5>
+                <p class="card-text" style="
+                color: #041c4c;
+                ">
+                  Use este módulo para listar todos os usuários disponíveis cadastrados
+                </p>
+              </div>
+            </a>
+          </div>
+          <div class="col card col-lg-2 border border-5 rounded" style="width: 18rem">
+            <a href="#editar_usuario" class="ancora-icons" style="text-decoration: none;">
+              <div class="card-body">
+                <h5 class="card-title" style="
+                color: #041c4c;
+                ">
+                  <i class="fa-solid fa-user-pen"></i>
+                  Edição de Usuários
+                </h5>
+                <p class="card-text" style="
+                color: #041c4c;
+                ">
+                  Use este módulo para editar usuários já existentes
+                </p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>

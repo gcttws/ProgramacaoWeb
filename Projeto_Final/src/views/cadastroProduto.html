@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+    <script>
+      import logo from "../../public/img/logo.svg";
+    </script>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark border border-2 border-secundary"
+      style="background-color: #9aa4b7"
+    >
+      <div class="container">
+        <div class="collapse navbar-collapse">
+          <a class="navbar-brand" href="#">
+            <img
+              src="https://i.imgur.com/uVzujQa.png"
+              alt=""
+              width="80"
+              height="80"
+            />
+          </a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center col-md-6">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" style="color: #041c4c">
+                <i class="fa-solid fa-users"></i>
+                Usuários</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color: #041c4c">
+                <i class="fa-solid fa-box"></i>
+                Produtos</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNavDarkDropdown"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                style="color: #041c4c"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li>
+                  <a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    Configurações</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fa-solid fa-right-from-bracket"></i> Sair</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Search bar-->
+    <div
+      class="row justify-content-center border-bottom border-2"
+      style="background-color: #d9d9d9"
+    >
+      <div class="col-6">
+        <input
+          class="form-control form-control-dark border border-2 rounded border-secundary"
+          type="text"
+          name="buscar"
+          placeholder="Buscar"
+          aria-label="Buscar"
+        />
+      </div>
+    </div>
+    <!--Search bar-->
+    <!--Main-->
+    <main>
+      <div class="container">
+        <div class="row align-items-center justify-content-center mt-5">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
+            <h1 class="row justify-content-center" style="color: #041c4c">
+              <i class="fa-solid fa-box col-auto"></i>
+              Cadastro de Produto
+            </h1>
+            <!--Forms-->
+            <form action="/cadastro_produto" method="post" class="form-control">
+              <!--Input Nome-->
+              <div class="row mb-3">
+                <label class="visually-hidden" for="nome_produto">Nome</label>
+                <div class="input-group">
+                  <div
+                    class="input-group-text"
+                    style="color: #ffff; background-color: #041c4c"
+                  >
+                    <i class="fa-brands fa-product-hunt"></i>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nome_produto"
+                    name="nome_produto"
+                    placeholder="Nome"
+                  />
+                </div>
+              </div>
+              <!--Input Descrição-->
+              <div class="row mb-3">
+                <label class="visually-hidden" for="descricao_produto"
+                  >Descrição</label
+                >
+                <div class="input-group">
+                  <div
+                    class="input-group-text"
+                    style="color: #ffff; background-color: #041c4c"
+                  >
+                    <i class="fa-solid fa-asterisk"></i>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="descricao_produto"
+                    name="descricao_produto"
+                    placeholder="Descrição"
+                  />
+                </div>
+              </div>
+              <!--Input Categoria-->
+              <div class="row mb-3">
+                <label class="visually-hidden" for="categoria_produto"
+                  >Categoria</label
+                >
+                <div class="input-group">
+                  <div
+                    class="input-group-text"
+                    style="color: #ffff; background-color: #041c4c"
+                  >
+                    <i class="fa-solid fa-bars"></i>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="categoria_produto"
+                    name="categoria_produto"
+                    placeholder="Categoria"
+                  />
+                </div>
+              </div>
+              <!--Input Quantidade-->
+              <div class="row mb-3">
+                <label class="visually-hidden" for="quantidade_produto"
+                  >Quantidade</label
+                >
+                <div class="input-group">
+                  <div
+                    class="input-group-text"
+                    style="color: #ffff; background-color: #041c4c"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="quantidade_produto"
+                    name="quantidade_produto"
+                    placeholder="Quantidade"
+                  />
+                </div>
+              </div>
+              <!--Input Valor-->
+              <div class="row mb-3">
+                <label class="visually-hidden" for="valor_produto">Valor</label>
+                <div class="input-group">
+                  <div
+                    class="input-group-text"
+                    style="color: #ffff; background-color: #041c4c"
+                  >
+                    <i class="fa-solid fa-dollar-sign"></i>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="valor_produto"
+                    name="valor_produto"
+                    placeholder="Valor"
+                  />
+                </div>
+              </div>
+              <!--Submit button-->
+              <div class="row justify-content-end mb-3">
+                <div class="col-auto">
+                  <button type="submit" class="btn btn-primary">
+                    Cadastrar
+                  </button>
+                </div>
+              </div>
+              <!--/Submit button-->
+            </form>
+            <!--/Forms-->
+          </div>
+        </div>
+      </div>
+    </main>
+    <!--/Main-->
+  </body>
+</html>

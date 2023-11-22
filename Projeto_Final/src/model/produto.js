@@ -22,11 +22,7 @@ const Produto = database.define('produto', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    preco_custo: {
-        type: Sequelize.DECIMAL(8, 2),
-        allowNull: false
-    },
-    preco_venda: {
+    valor_produto: {
         type: Sequelize.DECIMAL(8, 2),
         allowNull: false
     },

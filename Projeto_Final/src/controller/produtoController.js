@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const Produto = require('../model/produto');
 
 function indexView(req, res) {
@@ -23,19 +23,18 @@ function editarProdutoView(req,res){
 
 function cadastrarProduto(req, res){
     let produto = {
-        nome: typeof req.body.nome === 'string' ? req.body.nome : '',
-        descricao: typeof req.body.descricao === 'string' ? req.body.descricao : '',
-        quantidade: req.body.quantidade,
-        preco_custo: req.body.preco_custo,
-        preco_venda: req.body.preco_venda,
-        categoria: req.body.categoria,
+        nome_produto: typeof req.body.nome_produto === 'string' ? req.body.nome_produto : '',
+        descricao_produto: typeof req.body.descricao_produto === 'string' ? req.body.descricao_produto : '',
+        quantidade_produto: req.body.quantidade_produto,
+        valor_produto: req.body.valor_produto, 
+        categoria_produto: req.body.categoria_produto,
+        estado_produto: req.body.estado_produto,
         usuario_id: req.session.usuario.id
     }
 
     Produto.create(produto).then(()=>{
         let sucesso = true;
         res.render("cadastroProduto.html", {sucesso});
-        res.redirect('/api/produtos');
     }).catch((err) => {
         console.log(err);
         let erro_cadastrar_produto = true;
@@ -45,21 +44,44 @@ function cadastrarProduto(req, res){
 
 function listarProdutos(req, res){
     Produto.findAll({
-        where: {
-            usuario_id: req.session.usuario.id,
-            quantidade: {
-                [Sequelize.Op.gt] : 1 // Usando o operador 'greater than' do Sequelize
-            }
+        where:{
+            usuario_id: req.session.usuario.id
         }
     }).then((produtos)=>{
+        console.log(produtos);
         res.render('listagemProduto.html', {produtos});
     }).catch((erro_recupera_produtos)=>{
         res.render('listagemProduto.html', {erro_recupera_produtos});
     });
 }
 
+/*
+{
+        where: {
+            usuario_id: req.session.usuario.id,
+            quantidade_produto: {
+                [Sequelize.Op.gt] : 1 // Usando o operador 'greater than' do Sequelize
+            }
+        }
+    }
+function listarProdutosRetornaJSON(req, res) {
+    Produto.findAll({
+        where: {
+            usuario_id: req.session.usuario.id,
+            quantidade: {
+                {Sequelize.Op.gt} : 1
+            }
+        }
+    })
+}
+*/
 function excluirProduto(req, res){
 
+}
+
+
+function listaCategorias(){
+    return Produto.rawAttributes.categoria_produto.values;
 }
 
 module.exports = {

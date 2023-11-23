@@ -2,6 +2,7 @@ const express = require('express');
 const mustacheExpress = require('mustache-express');
 const session = require('express-session');
 const db = require('./src/db');
+const path = require('path');
 
 const app = express();
 
@@ -11,7 +12,8 @@ app.set('views', __dirname + '/src/views');
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
 
 app.use(session({
     secret: 'secret-token',

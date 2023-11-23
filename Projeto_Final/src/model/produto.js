@@ -9,16 +9,16 @@ const Produto = database.define('produto', {
         allowNull: false,
         primaryKey: true
     },
-    nome: {
+    nome_produto: {
         type: Sequelize.STRING(100),
         allowNull: false,
         unique: true
     },
-    descricao: {
+    descricao_produto: {
         type: Sequelize.TEXT,
         allowNull: false
     },
-    quantidade: {
+    quantidade_produto: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
@@ -26,12 +26,12 @@ const Produto = database.define('produto', {
         type: Sequelize.DECIMAL(8, 2),
         allowNull: false
     },
-    categoria:{
+    categoria_produto:{
         type: Sequelize.ENUM,
         values: (['eletrônico', 'eletrodoméstico','vestuário', 'alimento']),
         allowNull: false
     },
-    estado: {
+    estado_produto: {
         type: Sequelize.ENUM,
         values: (['avariado', 'funcional', 'manutenção'])
     },

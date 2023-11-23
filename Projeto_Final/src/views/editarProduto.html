@@ -18,42 +18,8 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/index.css" />
-    <script>
-      import logo from "../../public/img/logo.svg";
-    </script>
   </head>
   <body>
-    <script>
-      const main = document.getElementsByTagName("main");
-
-      document.onreadystatechange = async function (main) {
-        
-        // Máscara Preço
-        const preco = document.getElementById("valor_produto"); // Seletor do campo de telefone
-
-        preco.addEventListener("keypress", (e) => mascaraValor(e.target.value)); // Dispara quando digitado no campo
-        preco.addEventListener("change", (e) => mascaraValor(e.target.value)); // Dispara quando autocompletado o campo
-
-        const mascaraValor = (valor) => {
-          valor = valor.replace(/\D/g, "");
-          valor = valor.replace(/(\d+)/g, "R$ $1");
-          valor = valor.replace(/(\d+)(\d{2})$/, "$1,$2");
-          valor = valor.replace(/(\d+)(\d{2})$/, "R$ $1,$2");
-          preco.value = valor; // Insere o(s) valor(es) no campo
-        };
-
-        // Máscara Quantidade
-        const quantidade = document.getElementById("quantidade_produto");
-
-        quantidade.addEventListener("keypress", (e) => mascaraQuantidade(e.target.value));
-        quantidade.addEventListener("change", (e) => mascaraQuantidade(e.target.value))
-
-        const mascaraQuantidade = (valor) => {
-          valor = valor.replace(/\D/g, "");
-          quantidade.value = valor;
-        }
-      };
-    </script>
     <nav
       class="navbar navbar-expand-lg navbar-dark border border-2 border-secundary"
       style="background-color: #9aa4b7"
@@ -147,27 +113,34 @@
     </div>
     <!--Search bar-->
     <!--Main-->
+
     <main>
       <div class="container mt-4">
         <div class="row align-items-center justify-content-center mt-5">
           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5">
             {{#sucesso}}
             <div class="alert alert-success">
-              Produto cadastrado com sucesso!
+              Produto editado com sucesso!
             </div>
-            {{/sucesso}} {{#erro_cadastrar_produto}}
-            <div class="alert alert-danger">Erro ao cadastrar Produto!</div>
-            {{/erro_cadastrar_produto}}
+            {{/sucesso}} {{#erro_atualizar_produto}}
+            <div class="alert alert-danger">Erro ao editar Produto!</div>
+            {{/erro_atualizar_produto}}
             <h1 class="row justify-content-center" style="color: #041c4c">
               <i class="fa-solid fa-box col-auto"></i>
-              Cadastro de Produto
+              Editar Produto
             </h1>
             <!--Forms-->
             <form
-              action="/cadastrar_produto"
+              action="/editar_produto"
               method="post"
               class="form-control"
             >
+            <!--Input Id-->
+            <input
+              type="hidden"
+              name="id"
+              value="{{produto.id}}"
+              >
               <!--Input Nome-->
               <div class="row mb-3">
                 <label class="visually-hidden" for="nome_produto">Nome</label>
@@ -184,6 +157,7 @@
                     id="nome_produto"
                     name="nome_produto"
                     placeholder="Nome"
+                    value= "{{produto.nome_produto}}"
                     required
                   />
                 </div>
@@ -206,6 +180,7 @@
                     id="descricao_produto"
                     name="descricao_produto"
                     placeholder="Descrição"
+                    value= "{{produto.descricao_produto}}"
                     required
                   />
                 </div>
@@ -227,6 +202,7 @@
                     id="categoria_produto"
                     name="categoria_produto"
                     aria-label="Default select example"
+                    value= "{{produto.categoria_produto}}"
                     required
                   >
                     <option selected>Categoria</option>
@@ -254,6 +230,7 @@
                     id="estado_produto"
                     name="estado_produto"
                     aria-label="Default select example"
+                    value= "{{produto.estado_produto}}"
                     required
                   >
                     <option selected>Estado</option>
@@ -281,6 +258,7 @@
                     id="quantidade_produto"
                     name="quantidade_produto"
                     placeholder="Quantidade"
+                    value= "{{produto.quantidade_produto}}"
                     required
                   />
                 </div>
@@ -301,6 +279,7 @@
                     id="valor_produto"
                     name="valor_produto"
                     placeholder="Valor"
+                    value= "{{produto.valor_produto}}"
                     required
                   />
                 </div>
@@ -309,7 +288,7 @@
               <div class="row justify-content-end mb-3">
                 <div class="col-auto">
                   <button type="submit" class="btn btn-primary">
-                    Cadastrar
+                    Confirmar
                   </button>
                 </div>
               </div>
@@ -321,5 +300,7 @@
       </div>
     </main>
     <!--/Main-->
+
+    <!--Pop-Up Confirmação de exclusão-->
   </body>
 </html>

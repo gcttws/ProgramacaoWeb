@@ -18,7 +18,12 @@ function listagemProdutoView(req, res){
 }
 
 function editarProdutoView(req,res){
-    res.render('editarProduto.html');
+    req.session.produtoIdEditar = req.params.id;
+    const produtoId = req.params.id;
+
+    Produto.findByPk(produtoId).then(function(produto){
+        res.render("editarProduto.html", {produto})
+    });
 }
 
 function cadastrarProduto(req, res){
@@ -43,45 +48,59 @@ function cadastrarProduto(req, res){
 }
 
 function listarProdutos(req, res){
+    let sucessoExcluir = req.query.sucesso_excluir;
     Produto.findAll({
         where:{
             usuario_id: req.session.usuario.id
         }
     }).then((produtos)=>{
         console.log(produtos);
-        res.render('listagemProduto.html', {produtos});
+        res.render('listagemProduto.html', {produtos, sucessoExcluir});
     }).catch((erro_recupera_produtos)=>{
         res.render('listagemProduto.html', {erro_recupera_produtos});
     });
 }
 
-/*
-{
-        where: {
-            usuario_id: req.session.usuario.id,
-            quantidade_produto: {
-                [Sequelize.Op.gt] : 1 // Usando o operador 'greater than' do Sequelize
-            }
+function editarProduto(req, res){
+    let dadosAtualizado = {
+        nome_produto: typeof req.body.nome_produto === 'string' ? req.body.nome_produto : '',
+        descricao_produto: typeof req.body.descricao_produto === 'string' ? req.body.descricao_produto : '',
+        quantidade_produto: req.body.quantidade_produto,
+        valor_produto: req.body.valor_produto, 
+        categoria_produto: req.body.categoria_produto,
+        estado_produto: req.body.estado_produto
+    };
+
+    Produto.update(
+        dadosAtualizado, {
+            where: {
+                id: req.body.id,
+            },
         }
-    }
-function listarProdutosRetornaJSON(req, res) {
-    Produto.findAll({
-        where: {
-            usuario_id: req.session.usuario.id,
-            quantidade: {
-                {Sequelize.Op.gt} : 1
-            }
-        }
+    ).then(function(sucesso){
+        res.redirect('/listar_produtos');
+
+    })
+    .catch(function(erro_atualizar_produto){
+        res.render("editarProduto.html", {dadosAtualizado, erro_atualizar_produto});
     })
 }
-*/
+
+
 function excluirProduto(req, res){
+    const produtoId = req.body.id;
 
-}
-
-
-function listaCategorias(){
-    return Produto.rawAttributes.categoria_produto.values;
+    Produto.destroy({
+        where:{
+            id: produtoId
+        }
+    }).then((sucesso) => {
+        res.redirect('/listar_produtos?sucesso_excluir=1');
+    }).catch(erro_excluir_produto => {
+        erro_excluir_produto = true;
+        console.log(err)
+        res.render('listagemProduto.html', {erro_excluir_produto});
+    })
 }
 
 module.exports = {
@@ -92,5 +111,6 @@ module.exports = {
     editarProdutoView,
     cadastrarProduto,
     listarProdutos,
+    editarProduto,
     excluirProduto
 }

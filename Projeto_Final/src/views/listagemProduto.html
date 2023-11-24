@@ -55,7 +55,11 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/listar_produtos" style="color: #041c4c">
+              <a
+                class="nav-link"
+                href="/listar_produtos"
+                style="color: #041c4c"
+              >
                 <i class="fa-solid fa-box"></i>
                 Produtos</a
               >
@@ -86,7 +90,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#"
+                  <a class="dropdown-item" href="/sair"
                     ><i class="fa-solid fa-right-from-bracket"></i> Sair</a
                   >
                 </li>
@@ -150,10 +154,16 @@
             <tr>
               <th scope="row">{{id}}</th>
               <td scope="col" style="text-align: center">{{nome_produto}}</td>
-              <td scope="col" style="text-align: center">{{descricao_produto}}</td>
-              <td scope="col" style="text-align: center">{{categoria_produto}}</td>
-              <td scope="col" style="text-align: center">{{quantidade_produto}}</td>
-              <td scope="col" style="text-align: center">{{valor_produto}}</td>
+              <td scope="col" style="text-align: center">
+                {{descricao_produto}}
+              </td>
+              <td scope="col" style="text-align: center">
+                {{categoria_produto}}
+              </td>
+              <td scope="col" style="text-align: center">
+                {{quantidade_produto}}
+              </td>
+              <td scope="col" style="text-align: center">R$ {{valor_produto}}</td>
               <td scope="col" style="text-align: center">{{estado_produto}}</td>
               <td scope="col" style="text-align: center">
                 <a href="/api/produtos/editar/{{id}}"
@@ -167,7 +177,7 @@
                   data-bs-toggle="modal"
                   data-bs-target="#myModal-{{id}}"
                 >
-                  <i class="fa-solid fa-circle-xmark" style="color: red;"></i>
+                  <i class="fa-solid fa-circle-xmark" style="color: red"></i>
                 </a>
                 <div class="modal" id="myModal-{{id}}">
                   <div class="modal-dialog">
@@ -196,7 +206,7 @@
                         >
                           Cancelar
                         </button>
-                        <form action="/excluir_produto" method="post">
+                        <form action="/excluir_produto/{{id}}" method="post">
                           <input
                             type="hidden"
                             value="{{id}}"

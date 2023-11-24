@@ -80,7 +80,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                <i class="fa-solid fa-user"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
                 <li>
@@ -163,7 +163,9 @@
               <td scope="col" style="text-align: center">
                 {{quantidade_produto}}
               </td>
-              <td scope="col" style="text-align: center">R$ {{valor_produto}}</td>
+              <td scope="col" style="text-align: center">
+                R$ {{valor_produto}}
+              </td>
               <td scope="col" style="text-align: center">{{estado_produto}}</td>
               <td scope="col" style="text-align: center">
                 <a href="/api/produtos/editar/{{id}}"

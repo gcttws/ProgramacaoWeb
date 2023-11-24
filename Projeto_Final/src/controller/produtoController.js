@@ -90,9 +90,9 @@ function dashboardProduto(req, res) {
         item_mais_barato: "N/A",
         quantidade_total_de_produtos: 0,
       };
+      res.render("home.html", {dados});
     } else {
-      const porcentagensCategorias = calcularPorcentagensPorCategoria(produtos);
-
+      
       let valor_total_inventario = produtos.reduce(
         (acc, currValue) =>
           acc + parseFloat(currValue.valor_produto.replace(",", ".")),
@@ -137,22 +137,9 @@ function dashboardProduto(req, res) {
       dados["item_mais_barato"] = item_mais_barato
         ? item_mais_barato.nome_produto
         : "N/A";
-      res.render("home.html", { dados, porcentagensCategorias });
+      res.render("home.html", {dados});
     }
   });
-}
-
-function calcularPorcentagensPorCategoria(produtos) {
-  const contagemCategorias = produtos.reduce((acc, produto) => {
-    acc[produto.categoria_produto] = (acc[produto.categoria_produto] || 0) + 1;
-    return acc;
-  }, {});
-
-  const totalProdutos = produtos.length;
-  return Object.keys(contagemCategorias).map((categoria) => ({
-    name: categoria,
-    y: (contagemCategorias[categoria] / totalProdutos) * 100,
-  }));
 }
 
 function editarProduto(req, res) {

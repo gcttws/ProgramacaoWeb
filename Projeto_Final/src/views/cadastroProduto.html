@@ -27,7 +27,6 @@
       const main = document.getElementsByTagName("main");
 
       document.onreadystatechange = async function (main) {
-        
         // Máscara Preço
         const preco = document.getElementById("valor_produto"); // Seletor do campo de telefone
 
@@ -45,13 +44,17 @@
         // Máscara Quantidade
         const quantidade = document.getElementById("quantidade_produto");
 
-        quantidade.addEventListener("keypress", (e) => mascaraQuantidade(e.target.value));
-        quantidade.addEventListener("change", (e) => mascaraQuantidade(e.target.value))
+        quantidade.addEventListener("keypress", (e) =>
+          mascaraQuantidade(e.target.value)
+        );
+        quantidade.addEventListener("change", (e) =>
+          mascaraQuantidade(e.target.value)
+        );
 
         const mascaraQuantidade = (valor) => {
           valor = valor.replace(/\D/g, "");
           quantidade.value = valor;
-        }
+        };
       };
     </script>
     <nav
@@ -89,7 +92,11 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/listar_produtos" style="color: #041c4c">
+              <a
+                class="nav-link"
+                href="/listar_produtos"
+                style="color: #041c4c"
+              >
                 <i class="fa-solid fa-box"></i>
                 Produtos</a
               >
@@ -110,7 +117,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                <i class="fa-solid fa-user"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
                 <li>
